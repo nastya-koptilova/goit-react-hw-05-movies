@@ -1,6 +1,6 @@
 import { ColorRing } from 'react-loader-spinner';
 
-export function Loader() {
+function Loader() {
   return (
     <ColorRing
       visible={true}
@@ -16,3 +16,5 @@ export function Loader() {
     />
   );
 }
+
+export default Loader;

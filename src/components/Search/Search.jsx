@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Button } from './Search.Styled';
 import PropTypes from 'prop-types';
 
-export const Search = ({ handleSubmit }) => {
+const Search = ({ handleSubmit }) => {
   const [searchParams] = useSearchParams();
   const searchFilm = searchParams.get('query');
   const [query, setQuery] = useState(searchFilm ?? '');
@@ -36,3 +36,5 @@ export const Search = ({ handleSubmit }) => {
 Search.propTypes = {
     handleSubmit : PropTypes.func.isRequired,
   };
+
+  export default Search;

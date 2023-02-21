@@ -1,10 +1,10 @@
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getTrending } from 'services/API';
 import { Container, StyledLink } from './HomePage.Styled';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [trending, setTrending] = useState([]);
   const [load, setLoad] = useState(false);
   const location = useLocation();
@@ -41,3 +41,5 @@ export const HomePage = () => {
     </Container>
   );
 };
+
+export default HomePage;

@@ -1,9 +1,9 @@
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/API';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [load, setLoad] = useState(false);
   const [movieCredits, setMovieCredits] = useState(() =>
@@ -48,3 +48,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

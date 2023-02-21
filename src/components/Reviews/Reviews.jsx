@@ -1,9 +1,9 @@
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/API';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [load, setLoad] = useState(false);
   const [movieReviews, setMovieReviews] = useState(() =>
@@ -45,3 +45,5 @@ export const Reviews = () => {
     </>
   );
 };
+
+export default Reviews;

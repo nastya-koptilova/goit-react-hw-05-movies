@@ -1,11 +1,11 @@
-import { GoBack } from 'components/GoBack/GoBack';
+import GoBack from 'components/GoBack/GoBack';
 import React, { useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/API';
 import { Container, InfoContainer, LinkContainer, StyledLink } from './MovieDetailsPage.Styled';
 import { MovieContainer } from './MovieDetailsPage.Styled';
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(() =>
     fetchMovieDetails(movieId)
@@ -68,3 +68,5 @@ export const MovieDetailsPage = () => {
     </Container>
   );
 };
+
+export default MovieDetailsPage;

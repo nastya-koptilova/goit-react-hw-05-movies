@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { StyledLink } from './SearchItem.Styled';
 import PropTypes from 'prop-types';
 
-export const SearchItem = ({ info }) => {
+const SearchItem = ({ info }) => {
 const location = useLocation();
   return (
     <li>
@@ -15,3 +15,5 @@ const location = useLocation();
 SearchItem.propTypes = {
     info : PropTypes.object.isRequired,
   };
+
+  export default SearchItem;

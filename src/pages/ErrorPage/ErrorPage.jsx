@@ -1,10 +1,12 @@
 import { Container } from 'pages/HomePage.Styled';
 import React from 'react';
 
-export const ErrorPage = () => {
+const ErrorPage = () => {
   return (
     <Container>
       <p>Error!</p>
     </Container>
   );
 };
+
+export default ErrorPage;

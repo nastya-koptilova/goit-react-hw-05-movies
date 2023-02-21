@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Search } from 'components/Search/Search';
-import { SearchItem } from 'components/SearchItem.jsx/SearchItem';
+import Search from 'components/Search/Search';
+import SearchItem from 'components/SearchItem.jsx/SearchItem';
 import { getSearchMovies } from 'services/API';
 import { useSearchParams } from 'react-router-dom';
 import { Container } from './MoviesPage.Styled';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [load, setLoad] = useState(false);
   const [querySearch, setquerySearch] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,3 +53,5 @@ export const MoviesPage = () => {
     </Container>
   );
 };
+
+export default MoviesPage;
