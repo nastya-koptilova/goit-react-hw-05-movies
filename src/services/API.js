@@ -10,9 +10,9 @@ export async function getTrending() {
   return data;
 }
 
-export async function getSearchMovies(query, page) {
+export async function getSearchMovies(query) {
   const { data } = await axios.get(
-    `${BASE_URL}search/movie?query=${query}&api_key=${KEY}&language=en-US&page=${page}&include_adult=false`
+    `${BASE_URL}search/movie?query=${query}&api_key=${KEY}&language=en-US&page=1&include_adult=false`
   );
   return data;
 }
@@ -31,9 +31,9 @@ export async function getMovieCredits(id) {
   return data;
 }
 
-export async function getMovieReviews(id, page) {
+export async function getMovieReviews(id) {
   const { data } = await axios.get(
-    `${BASE_URL}movie/${id}/reviews?api_key=${KEY}&language=en-US&page=${page}`
+    `${BASE_URL}movie/${id}/reviews?api_key=${KEY}&language=en-US&page=1`
   );
   return data;
 }

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  padding: 20px;
-`;
-
 export const StyledLink = styled(Link)`
-  color: blue;
+  text-decoration: none;
+  background-color: gainsboro;
+  padding: 5px 10px;
+  color: black;
+  text-align: center;
 `;
