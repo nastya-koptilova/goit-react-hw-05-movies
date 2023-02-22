@@ -5,7 +5,7 @@ const KEY = '24bdb15dbc109e85ecedc1baa3876895';
 
 export async function getTrending() {
   const { data } = await axios.get(
-    `${BASE_URL}trending/all/day?api_key=${KEY}`
+    `${BASE_URL}trending/movie/day?api_key=${KEY}`
   );
   return data;
 }

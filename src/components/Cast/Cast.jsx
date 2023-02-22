@@ -1,29 +1,30 @@
 import Loader from 'components/Loader/Loader';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/API';
 
 const Cast = () => {
   const { movieId } = useParams();
   const [load, setLoad] = useState(false);
-  const [movieCredits, setMovieCredits] = useState(() =>
-    fetchMovieCredits(movieId)
-  );
+  const [movieCredits, setMovieCredits] = useState([]);
 
-  async function fetchMovieCredits() {
-    if (!movieId) {
-      return;
+  useEffect(() => {
+    async function fetchMovieCredits() {
+      if (!movieId) {
+        return;
+      }
+      try {
+        setLoad(true);
+        const movieCreditsData = await getMovieCredits(movieId);
+        setMovieCredits(movieCreditsData);
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setLoad(false);
+      }
     }
-    try {
-      setLoad(true);
-      const movieCreditsData = await getMovieCredits(movieId);
-      setMovieCredits(movieCreditsData);
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setLoad(false);
-    }
-  }
+    fetchMovieCredits(movieId);
+  }, [movieId]);
 
   if (!movieCredits.cast) return null;
 

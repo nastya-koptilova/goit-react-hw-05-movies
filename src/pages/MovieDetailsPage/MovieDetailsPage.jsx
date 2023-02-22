@@ -1,28 +1,36 @@
 import GoBack from 'components/GoBack/GoBack';
-import React, { useState } from 'react';
+import Loader from 'components/Loader/Loader';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/API';
-import { Container, InfoContainer, LinkContainer, StyledLink } from './MovieDetailsPage.Styled';
+import {
+  Container,
+  InfoContainer,
+  LinkContainer,
+  StyledLink,
+} from './MovieDetailsPage.Styled';
 import { MovieContainer } from './MovieDetailsPage.Styled';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState(() =>
-    fetchMovieDetails(movieId)
-  );
+  const [movieDetails, setMovieDetails] = useState([]);
   const location = useLocation();
 
-  async function fetchMovieDetails() {
-    if (!movieId) {
-      return;
+  useEffect(() => {
+    async function fetchMovieDetails() {
+      if (!movieId) {
+        return;
+      }
+      try {
+        const movieDetailsData = await getMovieDetails(movieId);
+        setMovieDetails(movieDetailsData);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-    try {
-      const movieDetailsData = await getMovieDetails(movieId);
-      setMovieDetails(movieDetailsData);
-    } catch (error) {
-      console.log(error.message);
-    } 
-  }
+    fetchMovieDetails(movieId);
+  }, [movieId]);
+
   if (!movieDetails.genres) return null;
 
   const userScore = Math.round(movieDetails.vote_average * 10);
@@ -64,7 +72,9 @@ const MovieDetailsPage = () => {
           </li>
         </ul>
       </InfoContainer>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </Container>
   );
 };

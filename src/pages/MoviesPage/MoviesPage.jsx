@@ -22,6 +22,7 @@ const MoviesPage = () => {
     async function fetchSerchFilms() {
       try {
         setLoad(true);
+        setquerySearch([]);
         const searchFilms = await getSearchMovies(serchQuery);
         const { results } = searchFilms;
         setquerySearch(results);
@@ -43,8 +44,7 @@ const MoviesPage = () => {
           <SearchItem key={el.id} info={el}></SearchItem>
         ))}
         {querySearch.length === 0 &&
-        serchQuery !== null &&
-        serchQuery !== '' ? (
+        !load ? (
           <p>No results</p>
         ) : (
           <span></span>
